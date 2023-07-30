@@ -1,0 +1,119 @@
+@import "../../mixins";
+
+.navbarheader {
+
+    color: white;
+    @include d-flex(row, space-between, center);
+    background-color: rgb(83, 83, 83);
+    width: 100%;
+    height: 60px;
+    padding: 0 2rem;
+
+    .brand {
+        flex: 1;
+    }
+
+    .brand1 {
+        display: none;
+    }
+
+    .menu {
+        // ul{
+        //     display: flex;
+        //     flex-direction: row;
+        //     align-items: center;
+        //     li{
+        //         margin-right: 3rem;
+        //         a{
+        //             color: white;
+        //         }
+        //     }
+        // }
+
+        ul {
+            @include d-flex(row, flex-start, center);
+            gap: 1rem;
+
+            li {
+                a {
+                    cursor: pointer;
+                    color: #fff;
+                }
+            }
+        }
+    }
+
+    .hamggurger {
+        display: none;
+        cursor: pointer;
+    }
+
+    .toggle {
+        margin-left: 1rem;
+        cursor: pointer;
+
+        button {
+            svg {
+                color: var(--blue);
+            }
+        }
+    }
+}
+
+
+@media(max-width:600px) {
+    .navbarheader {
+        padding: 0 1rem;
+
+
+        .menu {
+
+            transform-origin: bottom left;
+            transform: skewY(-40deg);
+
+            &.open {
+                left: 0;
+            }
+
+            .brand1 {
+                transform: skewY(40deg);
+                padding-top: 8rem;
+                display: block
+            }
+
+            @include d-flex(column, flex-start, center);
+            gap: 1rem;
+            background-color: rgb(83, 83, 83);
+            width: 240px;
+            height: 100vh;
+            top: 0;
+            left: -240px;
+            position: fixed;
+            z-index: 100;
+            transition: all .3s ease-in-out;
+
+            ul {
+                transform: skewY(40deg);
+                @include d-flex(column, center, center);
+                gap: 2rem;
+                height: 100%;
+
+                li {
+                    // transform: skewY(-40deg);
+
+                    a {
+                        cursor: pointer;
+                        color: #fff;
+                    }
+                }
+            }
+        }
+
+        .hamggurger {
+            display: block;
+            cursor: pointer;
+        }
+
+
+    }
+}
